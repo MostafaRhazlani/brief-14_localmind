@@ -1,4 +1,4 @@
-<div class="form-add p-4 bg-white shadow sm:rounded-lg w-1/4 fixed right-0">
+<div class="form-add p-4 bg-white shadow sm:rounded-lg w-1/4 fixed right-0 z-10">
     <h3 class="text-xl font-bold text-gray-800">Write Your Question</h3>
     <form action="{{ route('question.store') }}" method="POST">
         @csrf
