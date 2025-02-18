@@ -60,9 +60,10 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Question $question)
+    public function edit($id)
     {
-        //
+        $question = Question::find($id);
+        return view('question-edit', compact('question'));
     }
 
     /**
@@ -70,7 +71,20 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'location' => 'required',
+            'content' => 'required',
+        ]);
+
+        $question = Question::find($request->id);
+
+        $question->title = $validated['title'];
+        $question->content = $validated['content'];
+        $question->location = $validated['location'];
+        $question->user_id = auth()->guard()->user()->id;
+        $question->save();
+        return redirect()->route('questions.index');
     }
 
     /**

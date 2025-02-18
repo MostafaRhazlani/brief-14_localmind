@@ -26,7 +26,24 @@
                                     <p class="text-gray-500 text-sm">Posted on {{ $question->user->created_at }}</p>
                                 </div>
                             </div>
+                            <div class="flex gap-2">
+                                <span class="h-8 w-8 rounded-full hover:bg-gray-200 flex justify-center items-center cursor-pointer hover:scale-110">
+                                    <i class="fa-regular fa-bookmark"></i>
+                                </span>
+                                    <x-dropdown align="right" width="48">
+                                        <x-slot name="trigger">
+                                            <span class="h-8 w-8 rounded-full hover:bg-gray-200 flex justify-center items-center cursor-pointer hover:scale-110">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </span>
+                                        </x-slot>
 
+                                        <x-slot name="content">
+                                            <x-dropdown-link :href="route('question.edit',  ['id' => $question->id])">
+                                                {{ __('Edit') }}
+                                            </x-dropdown-link>
+                                        </x-slot>
+                                    </x-dropdown>
+                            </div>
                         </div>
                         <!-- Question Content -->
                         <div class="mt-8">
