@@ -23,7 +23,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/question/{id}/show', [QuestionController::class, 'show'])->name('question.show');
     Route::get('/question/{id}/edit', [QuestionController::class, 'edit'])->name('question.edit');
     Route::put('/question/{id}/update', [QuestionController::class, 'update'])->name('question.update');
-    
+    Route::delete('/question/{id}/delete', [QuestionController::class, 'destroy'])->name('question.delete');
+
     Route::post('/answer/store', [AnswerController::class, 'store'])->name('answer.store');
 });
 

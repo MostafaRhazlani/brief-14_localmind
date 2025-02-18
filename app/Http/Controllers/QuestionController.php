@@ -90,8 +90,9 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Question $question)
+    public function destroy($id)
     {
-        //
+        Question::destroy($id);
+        return redirect()->route('questions.index');
     }
 }

@@ -38,9 +38,17 @@
                                         </x-slot>
 
                                         <x-slot name="content">
-                                            <x-dropdown-link :href="route('question.edit',  ['id' => $question->id])">
-                                                {{ __('Edit') }}
-                                            </x-dropdown-link>
+                                            <div class="px-1">
+                                                <x-dropdown-link :href="route('question.edit',  ['id' => $question->id])">
+                                                    {{ __('Edit') }}
+                                                </x-dropdown-link>
+
+                                                <form action="{{ route('question.delete',  ['id' => $question->id]) }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">{{ __('Delete') }}</button>
+                                                </form>
+                                            </div>
                                         </x-slot>
                                     </x-dropdown>
                             </div>
