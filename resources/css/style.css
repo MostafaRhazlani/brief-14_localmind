@@ -1,0 +1,9 @@
+.form-add {
+    transform: translate(100%);
+    transition: ease-out 0.4s;
+}
+
+.active.form-add {
+    transform: translate(0%);
+    transition: ease-out 0.4s;
+}

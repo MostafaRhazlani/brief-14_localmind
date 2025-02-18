@@ -29,7 +29,21 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'location' => 'required',
+            'content' => 'required',
+        ]);
+
+        $question = new Question();
+
+        $question->title = $validated['title'];
+        $question->location = $validated['location'];
+        $question->content = $validated['content'];
+        $question->user_id = auth()->guard()->user()->id;
+        $question->save();
+
+        return redirect()->route('questions.index');
     }
 
     /**
